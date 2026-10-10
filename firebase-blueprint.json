@@ -1,0 +1,104 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile and authentication details",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Unique user ID matching auth.uid" },
+        "displayName": { "type": "string", "description": "Display name of the user" },
+        "email": { "type": "string", "format": "email", "description": "User email address" },
+        "photoURL": { "type": "string", "description": "Profile picture URL" },
+        "createdAt": { "type": "string", "description": "Account creation timestamp" },
+        "lastLoginAt": { "type": "string", "description": "Last sign-in timestamp" }
+      },
+      "required": ["userId", "displayName", "email"]
+    },
+    "UserCharacter": {
+      "title": "UserCharacter",
+      "description": "Custom mannequin and avatar configuration",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "name": { "type": "string", "description": "Character name" },
+        "gender": { "type": "string", "enum": ["nu", "nam"], "description": "Gender selection" },
+        "ageGroup": { "type": "string", "description": "Age group" },
+        "skinTone": { "type": "number", "description": "Skin tone index 1-6" },
+        "hairStyle": { "type": "string", "description": "Hair style code" },
+        "updatedAt": { "type": "string", "description": "Last modified timestamp" }
+      },
+      "required": ["userId", "gender", "skinTone"]
+    },
+    "UserOutfit": {
+      "title": "UserOutfit",
+      "description": "Saved traditional costume outfit in Gui Ky Uc",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "title": { "type": "string", "description": "Outfit title" },
+        "trangPhucId": { "type": "string", "description": "Costume model identifier" },
+        "colorHex": { "type": "string", "description": "Primary fabric color" },
+        "notes": { "type": "string", "description": "Personal styling notes" },
+        "emotionalNote": { "type": "string", "description": "Personal emotional reflection" },
+        "mood": { "type": "string", "description": "Emotional mood tag" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["userId", "title", "trangPhucId"]
+    },
+    "UserJournalEntry": {
+      "title": "UserJournalEntry",
+      "description": "Personal styling experience journal and emotional reflections",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "outfitId": { "type": "string", "description": "Associated outfit ID" },
+        "trangPhucId": { "type": "string", "description": "Costume identifier" },
+        "costumeTitle": { "type": "string", "description": "Name of the styled costume" },
+        "mauId": { "type": "string", "description": "Primary costume color ID" },
+        "phuKienIds": { "type": "array", "description": "Accessories applied" },
+        "caption": { "type": "string", "description": "Styling summary caption" },
+        "emotionalNote": { "type": "string", "description": "Personal feelings, memories and emotional reflection" },
+        "mood": { "type": "string", "description": "Selected mood or feeling tag" },
+        "taoLuc": { "type": "number", "description": "Original styling timestamp in ms" },
+        "updatedAt": { "type": "string", "description": "Last update ISO timestamp" }
+      },
+      "required": ["userId", "outfitId", "emotionalNote"]
+    },
+    "UserMemory": {
+      "title": "UserMemory",
+      "description": "Heritage story and memory shared by user",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Author user ID" },
+        "senderName": { "type": "string", "description": "Author display name" },
+        "content": { "type": "string", "description": "Heritage story content" },
+        "costumeName": { "type": "string", "description": "Costume name mentioned" },
+        "era": { "type": "string", "description": "Historical dynasty or era" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["content", "senderName"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Private user account documents indexed by auth.uid"
+    },
+    "/users/{userId}/character/current": {
+      "schema": "UserCharacter",
+      "description": "Current user mannequin settings"
+    },
+    "/users/{userId}/outfits/{outfitId}": {
+      "schema": "UserOutfit",
+      "description": "User saved outfits collection"
+    },
+    "/users/{userId}/journal/{journalId}": {
+      "schema": "UserJournalEntry",
+      "description": "User personal experience journal entries and emotional notes"
+    },
+    "/memories/{memoryId}": {
+      "schema": "UserMemory",
+      "description": "Public community cultural memories"
+    }
+  }
+}

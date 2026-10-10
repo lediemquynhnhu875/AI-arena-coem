@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Croquis</title>
+<style>
+:root{--bg:#fff9ec;--card:#fff;--line:#f0dfb8;--brown:#6b3a14;--accent:#e08a1e;--sel:#fff1c4}
+*{box-sizing:border-box}body{margin:0;font:15px system-ui,sans-serif;background:var(--bg);color:var(--brown);display:grid;grid-template-columns:1fr 360px;min-height:100vh}
+#stage{display:flex;align-items:center;justify-content:center;padding:16px}#stage svg{max-height:92vh;width:auto;max-width:100%}
+aside{background:var(--card);border-left:1px solid var(--line);padding:16px;overflow:auto;max-height:100vh}
+h3{margin:14px 0 6px;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+.row{display:flex;flex-wrap:wrap;gap:6px}
+button{font:inherit;color:inherit;background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:7px 11px;cursor:pointer}
+button.on{background:var(--sel);border-color:var(--accent);font-weight:600}button:disabled{opacity:.35;cursor:not-allowed}
+.sw{display:inline-block;width:14px;height:14px;border-radius:50%;border:1px solid #0003;vertical-align:-2px;margin-right:6px}
+input[type=color]{width:44px;height:34px;border:1.5px solid var(--line);border-radius:9px;padding:2px;background:#fff}
+@media(max-width:800px){body{grid-template-columns:1fr}aside{max-height:none;border-left:0;border-top:1px solid var(--line)}}
+</style></head><body>
+<div id="stage"></div><aside id="panel"></aside>
+<script>
+const state={gender:'female',age:'adult',build:'balanced',hair:'low_bun',accessory:'none',view:'both'};
+let skin='#cfa17b',hair=null,groups=[],G={},PRESETS=[];
+const $=s=>document.querySelector(s);
+async function load(){
+  const d=await (await fetch('/api/options')).json();groups=d.groups;PRESETS=d.presets;groups.forEach(g=>G[g.group]=g);
+  build();draw();
+}
+function btn(label,on,fn,dis,sw){const b=document.createElement('button');
+  if(sw)b.innerHTML=`<span class="sw" style="background:${sw}"></span>`+label;else b.textContent=label;
+  if(on)b.classList.add('on');b.disabled=!!dis;b.onclick=fn;return b}
+function fits(acc){const h=G.hair.options.find(o=>o.id===state.hair);
+  if(acc.id==='none')return true;if(acc.id===h.bundledAccessory)return false;
+  return !acc.requires||h.slots.includes(acc.requires)}
+function build(){
+  const p=$('#panel');p.innerHTML='';
+  const sec=(t,items)=>{const h=document.createElement('h3');h.textContent=t;const r=document.createElement('div');r.className='row';items.forEach(i=>r.append(i));p.append(h,r)};
+  sec('Mẫu dựng sẵn',PRESETS.map(x=>btn(x.label,false,()=>{Object.assign(state,pick(x.config));skin=skinOf(x.config);hair=hairOf(x.config);build();draw()})));
+  for(const g of groups){
+    if(g.group==='skin')sec(g.title,[...g.options.map(o=>btn(o.label,skin===o.color,()=>{skin=o.color;apply();build()},0,o.color)),colorInput(skin,v=>{skin=v;apply()})]);
+    else if(g.group==='hair_color')sec(g.title,[btn('Mặc định kiểu tóc',hair===null,()=>{hair=null;apply();build()}),...g.options.map(o=>btn(o.label,hair===o.color,()=>{hair=o.color;apply();build()},0,o.color)),colorInput(hair||'#2b2420',v=>{hair=v;apply()})]);
+    else sec(g.title,g.options.map(o=>btn(o.label,state[g.group]===o.id,()=>{state[g.group]=o.id;
+        if(g.group==='gender'){const ok=G.hair.options.filter(h=>h.genders.includes(state.gender));if(!ok.some(h=>h.id===state.hair)){state.hair=ok[0].id;hair=null}}
+        if(!fits(G.accessory.options.find(a=>a.id===state.accessory)))state.accessory='none';build();draw()},
+        (g.group==='accessory'&&!fits(o))||(g.group==='hair'&&!o.genders.includes(state.gender)))));
+  }
+  sec('Mặt',[['front','Trước'],['back','Sau'],['both','Cả 2 mặt']].map(([v,l])=>btn(l,state.view===v,()=>{state.view=v;build();draw()})));
+}
+function pick(c){const o={};for(const k of Object.keys(state))if(c[k])o[k]=c[k];return o}
+function skinOf(c){return c.skin_color||(G.skin.options.find(o=>o.id===c.skin)||{color:skin}).color}
+function hairOf(c){if(!c.hair_color)return null;return c.hair_color[0]==='#'?c.hair_color:G.hair_color.options.find(o=>o.id===c.hair_color).color}
+function colorInput(v,fn){const i=document.createElement('input');i.type='color';i.value=v;i.oninput=()=>fn(i.value);return i}
+function apply(){const s=$('#stage svg');if(!s)return;s.style.setProperty('--skin',skin);
+  s.style.setProperty('--hair',hair||defaultHair())}
+function defaultHair(){return G.hair.options.find(o=>o.id===state.hair).defaultColor}
+async function draw(){
+  $('#stage').innerHTML=await (await fetch('/api/render?'+new URLSearchParams(state))).text();apply()}
+load();
+</script></body></html>

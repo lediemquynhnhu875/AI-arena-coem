@@ -1,0 +1,537 @@
+/* Cò Em — Hệ thống Màu sắc & Typography chuẩn: "Màu của Đất, Nắng, Lúa và Khăn Rằn Phương Nam" */
+
+:root {
+  /* ========================================================================= */
+  /* A. NHÓM MÀU NỀN DỊU MẮT (BRIGHT PAPER & SILK CANVAS)                      */
+  /* ========================================================================= */
+  --nen-bright: #FBFDF9; /* Trắng xuyến chỉ pha sắc mạ non: Màu nền toàn trang */
+  --nen-trang: #FFFFFF;  /* Bông gòn tinh khôi: Thẻ, modal, dock, lông Cò Em */
+  --nen-sang: #0F172A;   /* Chữ chính / tương phản cao cho text */
+  --nen-toi: #0F172A;    /* Chữ chính toàn app, Slate 900 WCAG AAA tuyệt đối không bị chìm */
+
+  /* ========================================================================= */
+  /* B. NHÓM SẮC VÀNG LÚA CHÍN & HỔ PHÁCH (SUN & RICE GOLD)                   */
+  /* ========================================================================= */
+  --vang-chinh: #CA8A04; /* Vàng tơ tằm hoàng gia: Nút CTA, viền áo, mỏ Cò Em */
+  --vang-nghe: #EAB308;  /* Vàng cúc đồng & nắng sớm: Focus outline, nón lá */
+  --vang-nhe: #FEF9C3;   /* Sợi tơ non: Nền thẻ ghi chú tơ tằm, nhắc nhở */
+  --vang-sang: #FDE047;  /* Ánh bình minh: Vầng hào quang nhẹ, tia nắng sớm */
+
+  /* ========================================================================= */
+  /* C. NHÓM XANH LÁ & NGỌC BÍCH (BAMBOO & EMERALD GREENS)                    */
+  /* ========================================================================= */
+  --xanh-chinh: #15803D; /* Xanh tre ngà / Ngọc lục bảo: Màu thương hiệu chính */
+  --xanh-la: #16A34A;    /* Xanh mạ non tươi tốt: Nút phối đồ, tiến trình */
+  --xanh-dam: #14532D;   /* Xanh rêu cổ tự: Tiêu đề modal, huy hiệu cao cấp */
+  --xanh-mint: #DCFCE7;  /* Xanh giọt sương mai: Nền nút phụ kiện, chip thời tiết */
+  --xanh-nhe: #F0FDF4;   /* Xanh mạ loãng: Nền phụ nhẹ nhàng */
+
+  /* ========================================================================= */
+  /* D. NHÓM NHẤN VĂN HÓA & ĐẤT TRẦM TÍCH (HERITAGE EARTH ACCENTS)            */
+  /* ========================================================================= */
+  --dat-nung: #C2410C;   /* Gốm Bát Tràng & Đất phù sa: Cảnh báo, thẻ gùi đồ */
+  --son-dong-ho: #DC2626;/* Đỏ son tranh Đông Hồ: Thêu phượng, xuất xứ di sản */
+  --tro-tram: #334155;   /* Chữ phụ Slate 700 rõ nét, tuyệt đối không chìm trong nền trắng */
+  --reu-phong: #15803D;  /* Xanh rêu lũy tre */
+
+  /* ========================================================================= */
+  /* E. BỘ ĐÔI KHĂN RẰN ĐỘC BẢN (THE ICONIC KHĂN RẰN CARO)                    */
+  /* ========================================================================= */
+  --khan-ran-den: #090D16;   /* Đen tuyền inky */
+  --khan-ran-trang: #FFFFFF; /* Trắng tuyết */
+  --khan-ran-xam: #475569;   /* Kẻ chỉ xám dệt */
+
+  /* ========================================================================= */
+  /* 1. HỆ THỐNG 3 FONT CHỮ DUY NHẤT TOÀN ỨNG DỤNG                             */
+  /* - Be Vietnam Pro: Phông chữ sans-serif chủ đạo cho UI, nút, nội dung     */
+  /* - Noto Serif: Phông chữ có chân trang nhã cho trích dẫn, tiêu đề cổ điển  */
+  /* - Charm: Phông chữ thư pháp mềm mại thuần Việt cho tựa đề nghệ thuật      */
+  /* ========================================================================= */
+  --font-than: "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+  --font-tieu-de: "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+  --font-co-dien: "Noto Serif", Georgia, serif;
+  --font-thu-phap: "Charm", cursive;
+
+  /* Viền lệch hữu cơ đặc trưng Nam Bộ */
+  --vien-lech-a: 16px 24px 18px 26px / 24px 16px 26px 18px;
+  --vien-lech-b: 24px 16px 26px 16px / 16px 24px 16px 24px;
+  --vien-bo-tron: 20px;
+
+  /* Nhịp thở linh vật & tương tác */
+  --nhip-cham: 400ms;
+  --nhip-tho: 3600ms;
+
+  /* Chiều cao không gian 3 tầng */
+  --top-bar-h: 56px;
+  --dock-h: 64px;
+
+  /* Mappings tokens dùng chung giao diện */
+  --nen-canvas: #FBFDF9;
+  --nen-the: #FFFFFF;
+  --nen-the-phu: #F7FAF5;
+  --vien-the: #DCFCE7;
+  --vien-the-hover: rgba(202, 138, 4, 0.45);
+  --sidebar-border: rgba(21, 128, 61, 0.16);
+  --nen-sidebar: rgba(255, 255, 255, 0.96);
+
+  --chu-chinh: #0F172A; /* Slate 900: Tiêu đề và chữ chính rõ nét */
+  --chu-mo: #64748B;    /* Slate 500: Chú thích mờ nhẹ */
+  --chu-phu: #334155;   /* Slate 700: Chữ phụ, nhãn rõ ràng */
+  --chu-toi: #0F172A;
+  --chu-sang: #FFFFFF;
+
+  --shadow-the: 0 4px 20px -2px rgba(26, 48, 34, 0.06), 0 1px 4px 0 rgba(26, 48, 34, 0.04);
+  --shadow-dock: 0 12px 32px -4px rgba(26, 48, 34, 0.15), 0 4px 12px rgba(202, 138, 4, 0.12);
+}
+
+/* ========================================================================= */
+/* CHẾ ĐỘ BAN ĐÊM (DARK MODE): XANH DƯƠNG ĐEN TRỜI ĐÊM ĐÚNG CHUẨN TRĂNG SAO */
+/* ========================================================================= */
+html[data-theme="dark"],
+html.theme-dark,
+html.dark {
+  color-scheme: dark;
+  /* Bầu trời đêm sâu thẳm: Xanh dương đen ngắm sao trăng */
+  --nen-bright: #050C18;
+  --nen-trang: #0B192E;
+  --nen-sang: #F8FAFC;
+  --nen-toi: #F8FAFC;
+
+  --nen-canvas: #050C18;
+  --nen-the: #0B192E;
+  --nen-the-phu: #102542;
+  --vien-the: rgba(56, 189, 248, 0.28);
+  --vien-the-hover: rgba(250, 204, 21, 0.65);
+  --sidebar-border: rgba(56, 189, 248, 0.22);
+  --nen-sidebar: rgba(6, 14, 27, 0.96);
+
+  --chu-chinh: #F8FAFC;
+  --chu-mo: #94A3B8;
+  --chu-phu: #CBD5E1;   /* Slate 300: Chữ phụ sáng rõ trên nền xanh đen */
+  --chu-toi: #050C18;
+  --chu-sang: #FFFFFF;
+
+  --vang-chinh: #F59E0B;
+  --vang-nghe: #FBBF24;
+  --vang-sang: #FDE047;
+  --vang-nhe: rgba(251, 191, 36, 0.15);
+  --xanh-chinh: #10B981;
+  --xanh-la: #34D399;
+  --xanh-dam: #34D399; /* Xanh mạ sáng trong đêm: Tương phản cao, không bị chìm như màu đen */
+  --xanh-mint: rgba(56, 189, 248, 0.2);
+  --xanh-nhe: rgba(16, 185, 129, 0.15);
+  --tro-tram: #CBD5E1;
+
+  --shadow-the: 0 8px 32px -4px rgba(0, 0, 0, 0.75), 0 0 16px rgba(56, 189, 248, 0.1);
+  --shadow-dock: 0 14px 36px -4px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.25);
+}
+
+/* ========================================================================= */
+/* HOẠ TIẾT KHĂN RẰN NAM BỘ CARO ĐỘC BẢN                                     */
+/* ========================================================================= */
+.bg-khan-ran {
+  background-color: var(--khan-ran-trang);
+  background-image: 
+    linear-gradient(45deg, var(--khan-ran-den) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--khan-ran-den) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--khan-ran-den) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--khan-ran-den) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+
+.pattern-khan-ran-caro {
+  background-color: #ffffff;
+  background-image: 
+    repeating-linear-gradient(0deg, rgba(9, 13, 22, 0.85) 0px, rgba(9, 13, 22, 0.85) 4px, transparent 4px, transparent 10px),
+    repeating-linear-gradient(90deg, rgba(9, 13, 22, 0.85) 0px, rgba(9, 13, 22, 0.85) 4px, transparent 4px, transparent 10px);
+}
+
+/* BỐ CỤC CHUNG: Căn giữa chuẩn xác trên toàn bộ các màn hình trong vùng hiển thị */
+.gate,
+.gate-screen,
+.que-nha,
+.costume-s2,
+.costume-detail,
+.outfit-screen,
+.character-screen,
+.char-test,
+.gui-screen,
+.dong-thoi-gian,
+.soi-chi-screen,
+.cho-phien-screen,
+.tham-tu-screen,
+.ban-do-screen,
+.main-studio-screen,
+.tu-do-screen,
+.nhat-ky-screen,
+.journal-screen,
+.dev-screen,
+.giu-chuan-screen {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-bottom: calc(var(--dock-h, 64px) + 24px) !important;
+}
+
+/* KHUNG THẺ STUDIO TẠO DÁNG NHÂN VẬT 2D */
+.char-studio-card {
+  background: var(--nen-the, rgba(255, 255, 255, 0.95)) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--vien-the, rgba(245, 158, 11, 0.35)) !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 12px 32px -4px rgba(180, 83, 9, 0.1), 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="dark"] .char-studio-card,
+html.theme-dark .char-studio-card {
+  background: rgba(15, 23, 42, 0.94) !important;
+  border-color: rgba(51, 65, 85, 0.8) !important;
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.5) !important;
+}
+
+html, body {
+  margin: 0;
+  background: var(--nen-bright);
+  color: var(--nen-toi);
+  font-family: var(--font-than);
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--vang-nghe); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* Công tắc Giảm chuyển động */
+.giam-chuyen-dong,
+.giam-chuyen-dong * {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* Công tắc Chữ lớn, dễ đọc: tăng cỡ chữ, tăng tương phản */
+html.chu-lon-de-doc {
+  font-size: 114%;
+}
+.chu-lon-de-doc {
+  --nen-sang: #FFFFFF;
+}
+html:not(.dark) .chu-lon-de-doc {
+  --tro-tram: #384F42;
+}
+html.dark .chu-lon-de-doc,
+html[data-theme="dark"] .chu-lon-de-doc {
+  --tro-tram: #F1F5F9;
+}
+.chu-lon-de-doc p,
+.chu-lon-de-doc span,
+.chu-lon-de-doc button,
+.chu-lon-de-doc label {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+/* ========================================================================= */
+/* CÁC MÀN HÌNH NỀN TRONG SUỐT ĐỂ HIỆN NỀN THIÊN NHIÊN (NATURE BG TOÀN BỘ)  */
+/* ========================================================================= */
+.gate,
+.gate-screen,
+.que-nha,
+.gui-screen,
+.dong-thoi-gian,
+.soi-chi-screen,
+.character-screen,
+.char-test,
+.cho-phien-screen,
+.tham-tu-screen,
+.ban-do-screen,
+.costume-s2,
+.costume-detail,
+.main-studio-screen,
+.tu-do-screen,
+.giu-chuan-screen,
+.outfit-screen,
+.dong-thoi-gian,
+.soi-chi-screen,
+.nhat-ky-screen,
+.journal-screen {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--chu-chinh) !important;
+}
+
+/* ========================================================================= */
+/* QUY CHUẨN THẺ & KHỐI CHỨA (CARDS & CONTAINERS TRẮNG - VÀNG - XANH LÁ)     */
+/* ========================================================================= */
+.timeline-card,
+.cho-card,
+.costume-detail__card,
+.gui-card,
+.gui-screen__intro,
+.gui-compare-col,
+.gui-compare-panel,
+.costume-card,
+.chao-ban-card,
+.outfit-card,
+.outfit-control-card,
+.outfit-screen__stage,
+.soi-chi-card,
+.char-card,
+.gc-card,
+.cai-dat-card,
+.cai-dat-modal-card,
+.cat-gui-modal__card,
+.vpr-weather-modal__card,
+.cho-gui-modal,
+.mtd-container,
+.soi-col,
+.soi-costume-card,
+.soi-thread-card,
+.character-screen__avatar-frame {
+  background: var(--nen-the) !important;
+  border: 1px solid var(--vien-the) !important;
+  color: var(--chu-chinh) !important;
+  box-shadow: var(--shadow-the) !important;
+  border-radius: var(--vien-lech-a);
+}
+
+/* KHUNG CHỌN BỐI CẢNH / CẢM HỨNG QUÊ NHÀ NỔI BẬT & RỘNG RÃI */
+.que-nha__card {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 2px solid rgba(202, 138, 4, 0.35) !important;
+  color: var(--chu-chinh) !important;
+  box-shadow: 0 24px 60px -12px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(21, 128, 61, 0.15) !important;
+  border-radius: 28px !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+html[data-theme="dark"] .que-nha__card,
+html.dark .que-nha__card {
+  background: rgba(11, 25, 46, 0.95) !important;
+  border: 2px solid rgba(250, 204, 21, 0.4) !important;
+  color: #F8FAFC !important;
+  box-shadow: 0 28px 70px -14px rgba(0, 0, 0, 0.75), 0 0 30px rgba(56, 189, 248, 0.15) !important;
+}
+
+/* Các khối item lồng bên trong thẻ */
+.cai-dat-item,
+.vpr-weather-modal__region-btn,
+.vpr-weather-modal__voice-box,
+.gui-card__avatar-wrap,
+.gui-card__caption-box,
+.timeline-card__svg-container,
+.soi-chi-screen__select,
+.soi-chi-screen__presets,
+.character-screen__opt-btn,
+.cho-gui-item,
+.cho-stat-item,
+.cho-card__stats-list,
+.cho-card__reason-box,
+.gui-action-btn {
+  background: var(--nen-the-phu) !important;
+  border-color: var(--vien-the) !important;
+  color: var(--nen-toi) !important;
+}
+
+/* NÚT TÙY CHỌN BỐI CẢNH NỔI BẬT, RÕ RÀNG, DỄ NHÌN */
+.que-nha__option-btn {
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(203, 213, 225, 0.9) !important;
+  color: #0F172A !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+}
+
+.que-nha__option-btn:hover {
+  background: #FFFDF5 !important;
+  border-color: #CA8A04 !important;
+  box-shadow: 0 6px 18px rgba(202, 138, 4, 0.16) !important;
+}
+
+.que-nha__option-btn--active {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%) !important;
+  border: 2px solid #D97706 !important;
+  color: #78350F !important;
+  font-weight: 700 !important;
+  box-shadow: 0 8px 24px rgba(217, 119, 6, 0.22), inset 0 0 0 1px #F59E0B !important;
+}
+
+html[data-theme="dark"] .que-nha__option-btn {
+  background: #102542 !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.25) !important;
+  color: #F8FAFC !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .que-nha__option-btn:hover {
+  background: #173259 !important;
+  border-color: #FDE047 !important;
+  box-shadow: 0 6px 20px rgba(250, 204, 21, 0.2) !important;
+}
+
+html[data-theme="dark"] .que-nha__option-btn--active {
+  background: linear-gradient(135deg, rgba(202, 138, 4, 0.35) 0%, rgba(217, 119, 6, 0.22) 100%) !important;
+  border: 2px solid #FDE047 !important;
+  color: #FEF08A !important;
+  box-shadow: 0 8px 28px rgba(250, 204, 21, 0.25) !important;
+}
+
+.character-screen__opt-btn--active {
+  background: rgba(217, 164, 65, 0.2) !important;
+  border-color: var(--vang-nghe) !important;
+  color: var(--vang-nghe) !important;
+  font-weight: 600 !important;
+}
+
+.gui-screen__intro-quote {
+  color: var(--vang-chinh) !important;
+}
+
+.que-nha__question,
+.que-nha__name,
+.character-screen__title,
+.dong-thoi-gian__title,
+.dong-thoi-gian__sub {
+  color: var(--nen-toi) !important;
+}
+
+.dong-thoi-gian__nav {
+  background: var(--nen-sidebar) !important;
+  border-bottom: 1px solid var(--sidebar-border) !important;
+}
+
+/* Header mờ cố định thanh lịch */
+.gui-screen__header,
+.costume-detail__header,
+.dong-thoi-gian__header,
+.soi-chi-screen__header,
+.cho-phien-screen__header,
+.gc-header,
+header.border-b {
+  background: var(--nen-sidebar) !important;
+  border-color: var(--sidebar-border) !important;
+  color: var(--nen-toi) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ========================================================================= */
+/* CHỮ VÀ TIÊU ĐỀ: ĐỒNG BỘ TYPOGRAPHY GỌN GÀNG, HIỆN ĐẠI, DỄ ĐỌC            */
+/* ========================================================================= */
+h1, h2, h3, h4, .font-serif, strong.tieu-de-co {
+  color: var(--chu-chinh, var(--nen-toi));
+  font-family: var(--font-tieu-de);
+}
+
+.font-co-dien {
+  font-family: var(--font-co-dien);
+}
+
+/* Phụ đề, mô tả thanh thoát */
+[class*="__sub"],
+[class*="__desc"],
+[class*="__meta"],
+[class*="__date"],
+.text-stone-400,
+.text-stone-500,
+.text-gray-400,
+.text-gray-500 {
+  color: var(--tro-tram);
+}
+
+/* Điểm nhấn Vàng nghệ / Vàng chính */
+.text-amber-500,
+.text-amber-600,
+.text-yellow-600 {
+  color: var(--vang-chinh) !important;
+}
+
+/* Điểm nhấn Xanh lá / Xanh chính */
+.text-emerald-600,
+.text-green-600 {
+  color: var(--xanh-chinh) !important;
+}
+
+/* NÚT CHÍNH VÀNG HOÀNG KIM — CHỮ TỐI RÕ NÉT */
+[class*="--pri"],
+[class*="__cta"],
+.outfit-screen__finish-btn,
+.costume-card__cta,
+.que-nha__btn--pri,
+.cho-phien-screen__post-btn,
+.cai-dat-done-btn,
+.chao-ban-submit-btn,
+button[style*="background: var(--vang-nghe)"],
+button[style*="background: var(--vang-chinh)"] {
+  background: var(--vang-chinh) !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  border-radius: var(--vien-lech-a);
+  transition: transform var(--nhip-cham) ease, box-shadow var(--nhip-cham) ease;
+}
+
+[class*="--pri"]:hover,
+[class*="__cta"]:hover,
+.outfit-screen__finish-btn:hover,
+.costume-card__cta:hover,
+.que-nha__btn--pri:hover {
+  background: var(--vang-nghe) !important;
+  color: var(--nen-toi) !important;
+  transform: translateY(-1px);
+}
+
+/* Nút phụ phong cách viền thanh thoát */
+.dong-thoi-gian__back-btn,
+.soi-chi-screen__back-btn,
+.cho-phien-screen__back-btn,
+.costume-detail__back-btn,
+.gui-screen__back-btn,
+.outfit-screen__back-btn,
+.que-nha__btn--sub {
+  background: var(--nen-the) !important;
+  border: 1px solid var(--vien-the) !important;
+  color: var(--nen-toi) !important;
+  border-radius: var(--vien-lech-b);
+}
+
+.dong-thoi-gian__back-btn:hover,
+.soi-chi-screen__back-btn:hover,
+.cho-phien-screen__back-btn:hover,
+.costume-detail__back-btn:hover,
+.gui-screen__back-btn:hover,
+.outfit-screen__back-btn:hover {
+  background: var(--xanh-mint) !important;
+  border-color: var(--xanh-la) !important;
+  color: var(--xanh-dam) !important;
+}
+
+/* Ô nhập liệu */
+input, select, textarea {
+  background: var(--nen-the);
+  border: 1px solid var(--vien-the);
+  color: var(--nen-toi);
+  border-radius: 8px;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--xanh-la);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--xanh-mint);
+}
+
+/* Thẻ xem trước trang phục & Sân khấu phòng thử đồ trong chế độ tối */
+html[data-theme="dark"] .costume-card-preview,
+html.theme-dark .costume-card-preview,
+html.dark .costume-card-preview {
+  background: var(--dark-card-gradient, linear-gradient(180deg, #102542 0%, #0B192E 100%)) !important;
+}
+
+html[data-theme="dark"] .outfit-screen__stage,
+html.theme-dark .outfit-screen__stage,
+html.dark .outfit-screen__stage {
+  background: linear-gradient(180deg, rgba(16, 37, 66, 0.85) 0%, rgba(11, 25, 46, 0.95) 100%) !important;
+  border-color: rgba(56, 189, 248, 0.35) !important;
+  border-left: 3px solid var(--xanh-la) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.15) !important;
+}

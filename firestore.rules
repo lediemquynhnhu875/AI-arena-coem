@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // User Profile document
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+
+      // User Character subcollection
+      match /character/{charId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      // User Outfits subcollection
+      match /outfits/{outfitId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      // User Experience Journal subcollection
+      match /journal/{journalId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    // Public Community Memories
+    match /memories/{memoryId} {
+      allow read: if true;
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() && (resource.data.userId == request.auth.uid || isOwner(resource.data.userId));
+    }
+  }
+}

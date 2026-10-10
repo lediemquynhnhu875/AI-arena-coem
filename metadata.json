@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Remix Remix Cò Em",
+  "description": "Trải nghiệm kể chuyện văn hóa về trang phục truyền thống Việt Nam, dẫn chuyện bởi nhân vật Cò Em",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,249 @@
+[
+  {
+    "group": "gender",
+    "title": "Giới tính",
+    "kind": "shape",
+    "options": [
+      {
+        "id": "female",
+        "label": "Nữ",
+        "default": true
+      },
+      {
+        "id": "male",
+        "label": "Nam"
+      }
+    ]
+  },
+  {
+    "group": "age",
+    "title": "Độ tuổi",
+    "kind": "shape",
+    "options": [
+      {
+        "id": "child",
+        "label": "Trẻ em"
+      },
+      {
+        "id": "adult",
+        "label": "Người lớn",
+        "default": true
+      },
+      {
+        "id": "elder",
+        "label": "Cao tuổi"
+      }
+    ]
+  },
+  {
+    "group": "build",
+    "title": "Vóc dáng",
+    "kind": "shape",
+    "options": [
+      {
+        "id": "slim",
+        "label": "Mảnh mai"
+      },
+      {
+        "id": "balanced",
+        "label": "Cân đối",
+        "default": true
+      },
+      {
+        "id": "curvy",
+        "label": "Đầy đặn"
+      },
+      {
+        "id": "strong",
+        "label": "Đậm người"
+      }
+    ]
+  },
+  {
+    "group": "skin",
+    "title": "Tông da",
+    "kind": "color",
+    "options": [
+      {
+        "id": "bach_ngoc",
+        "label": "Bạch Ngọc",
+        "color": "#f7ebe0"
+      },
+      {
+        "id": "hoa_le",
+        "label": "Hoa Lê",
+        "color": "#f1d9c6"
+      },
+      {
+        "id": "to_tam",
+        "label": "Tơ Tằm",
+        "color": "#e6c48f"
+      },
+      {
+        "id": "banh_mat",
+        "label": "Bánh Mật",
+        "color": "#cfa17b"
+      },
+      {
+        "id": "nau_dong",
+        "label": "Nâu Đồng",
+        "color": "#9b6a53"
+      },
+      {
+        "id": "tho_cam",
+        "label": "Thổ Cẩm",
+        "color": "#5e3d27"
+      }
+    ]
+  },
+  {
+    "group": "hair",
+    "title": "Kiểu tóc",
+    "kind": "shape",
+    "options": [
+      {
+        "id": "low_bun",
+        "label": "Búi thấp thanh lịch (Chuẩn mẫu)",
+        "default": true,
+        "defaultColor": "#2b2420",
+        "genders": [
+          "female"
+        ],
+        "slots": [
+          "clip",
+          "pin"
+        ]
+      },
+      {
+        "id": "long_loose",
+        "label": "Tóc dài buông xõa",
+        "defaultColor": "#2b2420",
+        "genders": [
+          "female"
+        ],
+        "slots": [
+          "clip"
+        ]
+      },
+      {
+        "id": "pearl_bun",
+        "label": "Búi cài trâm ngọc",
+        "defaultColor": "#2b2420",
+        "genders": [
+          "female"
+        ],
+        "slots": [
+          "clip"
+        ],
+        "bundledAccessory": "pearl_pin"
+      },
+      {
+        "id": "short_bob",
+        "label": "Tóc ngắn tân thời",
+        "defaultColor": "#2b2420",
+        "genders": [
+          "female",
+          "male"
+        ],
+        "slots": [
+          "clip"
+        ]
+      },
+      {
+        "id": "silver",
+        "label": "Tóc hoa râm",
+        "defaultColor": "#a8a4a1",
+        "genders": [
+          "female",
+          "male"
+        ],
+        "slots": [
+          "clip",
+          "pin"
+        ]
+      },
+      {
+        "id": "short_crop",
+        "label": "Tóc cắt ngắn",
+        "defaultColor": "#2b2420",
+        "genders": [
+          "male"
+        ],
+        "slots": []
+      },
+      {
+        "id": "side_part",
+        "label": "Tóc rẽ ngôi",
+        "defaultColor": "#2b2420",
+        "genders": [
+          "male"
+        ],
+        "slots": []
+      }
+    ]
+  },
+  {
+    "group": "hair_color",
+    "title": "Màu tóc",
+    "kind": "color",
+    "options": [
+      {
+        "id": "den_huyen",
+        "label": "Đen Huyền",
+        "color": "#2b2420"
+      },
+      {
+        "id": "nau_hat_de",
+        "label": "Nâu Hạt Dẻ",
+        "color": "#5b3a29"
+      },
+      {
+        "id": "nau_canh_gian",
+        "label": "Nâu Cánh Gián",
+        "color": "#8a5a35"
+      },
+      {
+        "id": "hung_do",
+        "label": "Hung Đỏ",
+        "color": "#8b3a26"
+      },
+      {
+        "id": "vang_mat",
+        "label": "Vàng Mật",
+        "color": "#c9a15a"
+      },
+      {
+        "id": "bac",
+        "label": "Bạc",
+        "color": "#a8a4a1"
+      },
+      {
+        "id": "trang_tuyet",
+        "label": "Trắng Tuyết",
+        "color": "#e6e3df"
+      }
+    ]
+  },
+  {
+    "group": "accessory",
+    "title": "Phụ kiện tóc",
+    "kind": "shape",
+    "options": [
+      {
+        "id": "none",
+        "label": "Không",
+        "default": true
+      },
+      {
+        "id": "pearl_pin",
+        "label": "Trâm ngọc",
+        "requires": "pin"
+      },
+      {
+        "id": "flower_clip",
+        "label": "Hoa cài tóc",
+        "requires": "clip"
+      }
+    ]
+  }
+]

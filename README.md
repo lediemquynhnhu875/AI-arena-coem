@@ -1,4 +1,4 @@
-# Đóm Dáng — Việt Phục Remix
+# Cò em — Việt Phục Remix
 
 > **Trải nghiệm kể chuyện văn hóa và phối thử trang phục truyền thống Việt Nam**, dẫn dắt bởi nhân vật Đom Đóm ấm áp, điềm đạm.  
 > Ứng dụng tôn vinh di sản nếp áo của các dân tộc anh em trên dải đất hình chữ S với tinh thần: **Gìn giữ cốt cách xưa — Tự do thấu hiểu nay**.
